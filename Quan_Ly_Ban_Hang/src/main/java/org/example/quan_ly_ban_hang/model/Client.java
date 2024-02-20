@@ -10,6 +10,19 @@ public class Client {
     public Client() {
     }
 
+    public Client(Integer id, String name, String phone) {
+        this.id = id;
+        this.name = name;
+        this.phone = phone;
+    }
+
+    public Client(String name, String phone, String email, String address) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+    }
+
     public Client(Integer id, String name, String phone, String email, String address) {
         this.id = id;
         this.name = name;

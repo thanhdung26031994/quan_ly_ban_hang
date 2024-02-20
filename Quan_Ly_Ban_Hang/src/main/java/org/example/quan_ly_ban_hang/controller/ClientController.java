@@ -24,13 +24,42 @@ public class ClientController extends HttpServlet {
             action = "";
         }
         switch (action){
+            case "create":
+                showCreate(req,resp);
+                break;
+            case "edit":
+                showEditClient(req,resp);
+                break;
+            case "delete":
+                deleteClient(req,resp);
+                break;
             default:
                 listClient(req,resp);
                 break;
         }
     }
+
+    private void deleteClient(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        Integer id = Integer.valueOf(req.getParameter("id"));
+        clientService.moveById(id);
+        resp.sendRedirect("/client");
+    }
+
+    private void showEditClient(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("client/edit.jsp");
+        Integer id = Integer.valueOf(req.getParameter("id"));
+        Client clients = clientService.findById(id);
+        req.setAttribute("client", clients);
+        dispatcher.forward(req,resp);
+    }
+
+    private void showCreate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        RequestDispatcher dispatcher = req.getRequestDispatcher("client/create.jsp");
+        dispatcher.forward(req,resp);
+    }
+
     private void listClient(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/list.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("client/list.jsp");
         List<Client> clients = clientService.getAllClient();
         req.setAttribute("client", clients);
         dispatcher.forward(req,resp);
@@ -47,10 +76,30 @@ public class ClientController extends HttpServlet {
             case "create":
                 createClient(req,resp);
                 break;
+            case "edit":
+                editClient(req,resp);
+                break;
         }
     }
 
-    private void createClient(HttpServletRequest req, HttpServletResponse resp) {
+    private void editClient(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        Integer id = Integer.valueOf(req.getParameter("id"));
+        String name = req.getParameter("name");
+        String phone = req.getParameter("phone");
+        String email = req.getParameter("email");
+        String address = req.getParameter("address");
+        Client client = new Client(id, name, phone, email, address);
+        clientService.updateClient(client);
+        resp.sendRedirect("/client");
+    }
 
+    private void createClient(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String name = req.getParameter("name");
+        String phone = req.getParameter("phone");
+        String email = req.getParameter("email");
+        String address = req.getParameter("address");
+        Client client = new Client(name, phone, email, address);
+        clientService.addClient(client);
+        resp.sendRedirect("/client");
     }
 }

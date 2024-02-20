@@ -6,4 +6,12 @@ import java.util.List;
 
 public interface IClientService {
     List<Client> getAllClient();
+
+    void addClient(Client client);
+
+    void updateClient(Client client);
+
+    Client findById(Integer id);
+
+    void moveById(Integer id);
 }

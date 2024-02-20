@@ -24,7 +24,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/client">Khách Hàng</a></li>
                 <li class="breadcrumb-item"><a href="#">Sản Phẩm</a></li>
-                <li class="breadcrumb-item"><a href="#">Hoá Đơn</a></li>
+                <li class="breadcrumb-item"><a href="/invoice">Hoá Đơn</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><a href="#">Data</a></li>
             </ol>
         </nav>
@@ -35,7 +35,7 @@
     <h1 class="my-3">Quản Lý Khách Hàng</h1>
     <div class="row d-flex mx-3">
         <div class="col-8">
-            <a class="btn btn-warning" role="button" href="#">Thêm mới</a>
+            <a class="btn btn-warning" role="button" href="/client?action=create">Thêm mới</a>
         </div>
         <div class="col-4">
             <form class="d-flex" role="search" action="#" method="post">
@@ -69,10 +69,10 @@
                 <td>${c.email}</td>
                 <td>${c.address}</td>
                 <td>
-                    <a class="btn btn-warning" href="#" role="button">Chỉnh sửa</a>
+                    <a class="btn btn-warning" href="/client?action=edit&id=${c.id}" role="button">Chỉnh sửa</a>
                 </td>
                 <td>
-                    <a class="btn btn-warning" href="#" role="button">Xoá</a>
+                    <a class="btn btn-warning" href="/client?action=delete&id=${c.id}" role="button">Xoá</a>
                 </td>
             </tr>
         </c:forEach>

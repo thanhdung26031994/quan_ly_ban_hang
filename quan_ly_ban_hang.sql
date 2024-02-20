@@ -32,7 +32,10 @@ create table chi_tiet_hoa_don(
     id_hd int,
     id_sp int,
     so_luong int,
-    fon_gia float,
+    fon_gia float,san_phamkhach_hang
     foreign key(id_hd) references hoa_don(id),
     foreign key(id_sp) references san_pham(id)
 );
+
+insert into khach_hang
+values (1, 'Hải Nhật', '0987654321', 'hainhat@gmail.com', 'Huế');
