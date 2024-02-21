@@ -25,7 +25,8 @@
                 <li class="breadcrumb-item"><a href="/client">Khách Hàng</a></li>
                 <li class="breadcrumb-item"><a href="#">Sản Phẩm</a></li>
                 <li class="breadcrumb-item"><a href="/invoice">Hoá Đơn</a></li>
-                <li class="breadcrumb-item active" aria-current="page"><a href="#">Data</a></li>
+                <li class="breadcrumb-item"><a href="/detail">Chi Tiết HĐ</a></li>
+
             </ol>
         </nav>
     </div>

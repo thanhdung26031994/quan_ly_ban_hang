@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Acer
-  Date: 20/02/2024
-  Time: 16:25
+  Date: 21/02/2024
+  Time: 15:18
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -35,7 +35,7 @@
     <h1 class="my-3">Quản Lý Khách Hàng</h1>
     <div class="row d-flex mx-3">
         <div class="col-8">
-            <a class="btn btn-warning" role="button" href="/client?action=create">Thêm mới</a>
+            <a class="btn btn-warning" role="button" href="#">Thêm mới</a>
         </div>
         <div class="col-4">
             <form class="d-flex" role="search" action="#" method="post">
@@ -50,10 +50,11 @@
         <thead>
         <tr>
             <th scope="col">Stt</th>
-            <th scope="col">Tên Khách Hàng</th>
-            <th scope="col">Số Điện Thoại</th>
-            <th scope="col">Email</th>
-            <th scope="col">Địa chỉ</th>
+            <th scope="col">Mã SP</th>
+            <th scope="col">Tên SP</th>
+            <th scope="col">Số Lượng</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Tổng Tiền</th>
 
             <th scope="col">Chỉnh sửa</th>
             <th scope="col">Xoá</th>
@@ -61,18 +62,19 @@
         </thead>
 
         <tbody>
-        <c:forEach var="c" items="${client}" >
+        <c:forEach var="d" items="${detail}" >
             <tr>
-                <td>${c.id}</td>
-                <td>${c.name}</td>
-                <td>${c.phone}</td>
-                <td>${c.email}</td>
-                <td>${c.address}</td>
+                <td>${d.id}</td>
+                <td>${d.code}</td>
+                <td>${d.name}</td>
+                <td>${d.quantity}</td>
+                <td>${d.price}</td>
+                <td>${d.totalAmount}</td>
                 <td>
-                    <a class="btn btn-warning" href="/client?action=edit&id=${c.id}" role="button">Chỉnh sửa</a>
+                    <a class="btn btn-warning" href="#" role="button">Chỉnh sửa</a>
                 </td>
                 <td>
-                    <a class="btn btn-warning" href="/client?action=delete&id=${c.id}" role="button">Xoá</a>
+                    <a class="btn btn-warning" href="#" role="button">Xoá</a>
                 </td>
             </tr>
         </c:forEach>
