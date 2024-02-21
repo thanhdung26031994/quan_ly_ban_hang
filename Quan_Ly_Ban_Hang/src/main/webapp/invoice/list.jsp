@@ -69,10 +69,10 @@
                 <td>${i.sale}</td>
                 <td>${i.total}</td>
                 <td>
-                    <a class="btn btn-warning" href="#" role="button">Chỉnh sửa</a>
+                    <a class="btn btn-warning" href="/invoice?action=edit&id=${i.id}" role="button">Chỉnh sửa</a>
                 </td>
                 <td>
-                    <a class="btn btn-warning" href="#" role="button">Xoá</a>
+                    <a class="btn btn-warning" href="/invoice?action=delete&id=${i.id}" role="button">Xoá</a>
                 </td>
             </tr>
         </c:forEach>

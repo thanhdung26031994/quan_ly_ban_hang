@@ -8,6 +8,13 @@ public class Invoice {
     private Float total;
     private Client client;
 
+
+    public Invoice(Date sale, Float total, Client client) {
+        this.sale = sale;
+        this.total = total;
+        this.client = client;
+    }
+
     public Invoice() {
     }
 
@@ -18,6 +25,10 @@ public class Invoice {
         this.client = client;
     }
 
+    public java.sql.Date getSale() {
+        return (java.sql.Date) sale;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -26,9 +37,6 @@ public class Invoice {
         this.id = id;
     }
 
-    public Date getSale() {
-        return sale;
-    }
 
     public void setSale(Date sale) {
         this.sale = sale;

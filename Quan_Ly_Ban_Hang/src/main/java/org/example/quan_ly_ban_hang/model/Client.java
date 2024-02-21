@@ -7,7 +7,20 @@ public class Client {
     private String email;
     private String address;
 
+    public Client(Integer id) {
+        this.id = id;
+    }
+
+    public Client(String name) {
+        this.name = name;
+    }
+
     public Client() {
+    }
+
+    public Client(String name, String phone) {
+        this.name = name;
+        this.phone = phone;
     }
 
     public Client(Integer id, String name, String phone) {
@@ -29,6 +42,11 @@ public class Client {
         this.phone = phone;
         this.email = email;
         this.address = address;
+    }
+
+    public Client(Integer id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     public Integer getId() {
