@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Acer
-  Date: 21/02/2024
-  Time: 15:18
+  Date: 22/02/2024
+  Time: 00:18
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Tiết Hoá Đơn</title>
+    <title>Quản lý khách hàng</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -32,15 +32,15 @@
 </nav>
 
 <div class="container">
-    <h1 class="my-3">Chi Tiết Hoá Đơn</h1>
+    <h1 class="my-3">Quản Lý Khách Hàng</h1>
     <div class="row d-flex mx-3">
         <div class="col-8">
-            <a class="btn btn-warning" role="button" href="/detail?action=create">Thêm mới</a>
+            <a class="btn btn-warning" role="button" href="/client?action=create">Thêm mới</a>
         </div>
         <div class="col-4">
             <form class="d-flex" role="search" action="#" method="post">
                 <input name="action" value="find" hidden="">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="country">
+                <input class="form-control me-2" type="search" placeholder="Tìm theo tên" aria-label="Search" name="name">
                 <button class="btn btn-outline-secondary" type="submit">Tìm</button>
             </form>
         </div>
@@ -50,12 +50,10 @@
         <thead>
         <tr>
             <th scope="col">Stt</th>
-            <th scope="col">Mã SP</th>
-            <th scope="col">Tên SP</th>
-            <th scope="col">Tên KH</th>
-            <th scope="col">Số Lượng</th>
-            <th scope="col">Giá</th>
-            <th scope="col">Tổng Tiền</th>
+            <th scope="col">Tên Khách Hàng</th>
+            <th scope="col">Số Điện Thoại</th>
+            <th scope="col">Email</th>
+            <th scope="col">Địa chỉ</th>
 
             <th scope="col">Chỉnh sửa</th>
             <th scope="col">Xoá</th>
@@ -63,20 +61,18 @@
         </thead>
 
         <tbody>
-        <c:forEach var="d" items="${detail}" >
+        <c:forEach var="c" items="${client}" >
             <tr>
-                <td>${d.id}</td>
-                <td>${d.code}</td>
-                <td>${d.name}</td>
-                <td>${d.nameClient}</td>
-                <td>${d.quantity}</td>
-                <td>${d.price}</td>
-                <td>${d.totalAmount}</td>
+                <td>${c.id}</td>
+                <td>${c.name}</td>
+                <td>${c.phone}</td>
+                <td>${c.email}</td>
+                <td>${c.address}</td>
                 <td>
-                    <a class="btn btn-warning" href="#" role="button">Chỉnh sửa</a>
+                    <a class="btn btn-warning" href="/client?action=edit&id=${c.id}" role="button">Chỉnh sửa</a>
                 </td>
                 <td>
-                    <a class="btn btn-warning" href="#" role="button">Xoá</a>
+                    <a class="btn btn-warning" href="/client?action=delete&id=${c.id}" role="button">Xoá</a>
                 </td>
             </tr>
         </c:forEach>

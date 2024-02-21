@@ -8,6 +8,10 @@ public class Invoice {
     private Float total;
     private Client client;
 
+    public Invoice(Integer id) {
+        this.id = id;
+
+    }
 
     public Invoice(Date sale, Float total, Client client) {
         this.sale = sale;

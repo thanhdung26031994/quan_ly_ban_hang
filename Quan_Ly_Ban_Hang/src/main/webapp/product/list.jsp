@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Acer
   Date: 21/02/2024
-  Time: 15:18
+  Time: 15:49
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Tiết Hoá Đơn</title>
+    <title>Quản Lý Sản Phẩm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -26,16 +26,17 @@
                 <li class="breadcrumb-item"><a href="/product">Sản Phẩm</a></li>
                 <li class="breadcrumb-item"><a href="/invoice">Hoá Đơn</a></li>
                 <li class="breadcrumb-item"><a href="/detail">Chi Tiết HĐ</a></li>
+
             </ol>
         </nav>
     </div>
 </nav>
 
 <div class="container">
-    <h1 class="my-3">Chi Tiết Hoá Đơn</h1>
+    <h1 class="my-3">Quản Lý Sản Phẩm</h1>
     <div class="row d-flex mx-3">
         <div class="col-8">
-            <a class="btn btn-warning" role="button" href="/detail?action=create">Thêm mới</a>
+            <a class="btn btn-warning" role="button" href="#">Thêm mới</a>
         </div>
         <div class="col-4">
             <form class="d-flex" role="search" action="#" method="post">
@@ -52,10 +53,8 @@
             <th scope="col">Stt</th>
             <th scope="col">Mã SP</th>
             <th scope="col">Tên SP</th>
-            <th scope="col">Tên KH</th>
-            <th scope="col">Số Lượng</th>
             <th scope="col">Giá</th>
-            <th scope="col">Tổng Tiền</th>
+            <th scope="col">Số Lượng</th>
 
             <th scope="col">Chỉnh sửa</th>
             <th scope="col">Xoá</th>
@@ -63,15 +62,13 @@
         </thead>
 
         <tbody>
-        <c:forEach var="d" items="${detail}" >
+        <c:forEach var="product" items="${product}" >
             <tr>
-                <td>${d.id}</td>
-                <td>${d.code}</td>
-                <td>${d.name}</td>
-                <td>${d.nameClient}</td>
-                <td>${d.quantity}</td>
-                <td>${d.price}</td>
-                <td>${d.totalAmount}</td>
+                <td>${product.id}</td>
+                <td>${product.code}</td>
+                <td>${product.name}</td>
+                <td>${product.price}</td>
+                <td>${product.quantity}</td>
                 <td>
                     <a class="btn btn-warning" href="#" role="button">Chỉnh sửa</a>
                 </td>
@@ -85,3 +82,4 @@
 </div>
 </body>
 </html>
+

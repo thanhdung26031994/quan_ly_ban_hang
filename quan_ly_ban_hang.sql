@@ -32,17 +32,50 @@ create table chi_tiet_hoa_don(
     id_hd int,
     id_sp int,
     so_luong int,
-    don_gia float,
     foreign key(id_hd) references hoa_don(id),
     foreign key(id_sp) references san_pham(id)
 );
 
 insert into khach_hang
-values (1, 'Hải Nhật', '0987654321', 'hainhat@gmail.com', 'Huế');
+values (1, 'Hải Nhật', '0987654321', 'hainhat@gmail.com', 'Huế'),
+(2, 'Đăng Pháp', '081234560', 'dangphap@gmail.com', 'Quảng Nam');
 insert into hoa_don
-values (1, '2024-01-01', 17900, 1);
+values (1, '2024-01-01', 17900, 1),
+(2, '2024-02-02', 2200.00, 2);
+
+insert into san_pham
+values (1, 'SP01', 'Áo thun', '150.000', 10),
+(2, 'SP02', 'Quần Jean', '270.000', 15),
+(3, 'SP03', 'Mũ Sơn', '310.000', 5),
+(4, 'SP04', 'Giày Niken', '2500.000', 8),
+(5, 'SP05', 'Đồng Hồ', '1800.000', 9);
+
+insert into chi_tiet_hoa_don
+values (1, 1, 1, 1),
+(2, 2, 2, 2);
+
 select hoa_don.*, khach_hang.ten, khach_hang.sdt
 from hoa_don
 join khach_hang on khach_hang.id = hoa_don.id_kh;
 
-update hoa_don set ngay_ban = '2023-01-03', tong_tien = '1234', id_kh = '2' where id = 1;
+
+
+DELIMITER //
+create procedure get_all_cthd()
+begin
+select ct.id as stt, sp.ma as masp, sp.ten as ten, ct.so_luong as soluong,sp.gia as giaban, (ct.so_luong * sp.gia) as tien
+from chi_tiet_hoa_don ct
+join san_pham sp on sp.id = ct.id_sp
+join hoa_don hd on hd.id = ct.id_hd;
+end //
+DELIMITER ;
+
+call get_all_cthd();
+
+
+
+select sp.ma as masp, sp.ten as ten, ct.so_luong as soluong, kh.ten as tenKH
+from chi_tiet_hoa_don ct
+join san_pham sp on sp.id = ct.id_sp
+join hoa_don hd on hd.id = ct.id_hd
+join khach_hang kh on kh.id = hd.id_kh;

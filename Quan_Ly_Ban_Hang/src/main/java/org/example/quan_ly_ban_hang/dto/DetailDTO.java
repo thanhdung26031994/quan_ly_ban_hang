@@ -4,20 +4,37 @@ public class DetailDTO {
     private Integer id;
     private String code;
     private String name;
+    private String nameClient;
     private Integer quantity;
     private Float price;
     private Float totalAmount;
 
+
     public DetailDTO() {
     }
 
-    public DetailDTO(Integer id, String code, String name, Integer quantity, Float price, Float totalAmount) {
+    public DetailDTO(String name, String nameClient, Integer quantity) {
+        this.name = name;
+        this.nameClient = nameClient;
+        this.quantity = quantity;
+    }
+
+    public DetailDTO(Integer id, String code, String name, String nameClient, Integer quantity, Float price, Float totalAmount) {
         this.id = id;
         this.code = code;
         this.name = name;
+        this.nameClient = nameClient;
         this.quantity = quantity;
         this.price = price;
         this.totalAmount = totalAmount;
+    }
+
+    public String getNameClient() {
+        return nameClient;
+    }
+
+    public void setNameClient(String nameClient) {
+        this.nameClient = nameClient;
     }
 
     public Integer getId() {

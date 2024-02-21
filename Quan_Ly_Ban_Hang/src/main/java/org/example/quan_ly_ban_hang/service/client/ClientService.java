@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClientService implements IClientService{
+    private static String ORDER_BY_NAME = "select ten, sdt, email, dia_chi from khach_hang order by ten;";
     @Override
     public List<Client> getAllClient() {
         List<Client> clients = new ArrayList<>();
@@ -134,5 +135,67 @@ public class ClientService implements IClientService{
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    @Override
+    public List<Client> searchByName(String name) {
+        List<Client> clientList = new ArrayList<>();
+        Connection connection;
+        PreparedStatement statement = null;
+        try {
+            connection = DBConnection.getConnection();
+            statement = connection.prepareStatement("select ten, sdt, email, dia_chi from khach_hang where ten like ?;");
+            statement.setString(1, "%" + name + "%");
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                String name1 = rs.getString("ten");
+                String phone = rs.getString("sdt");
+                String email = rs.getString("email");
+                String address = rs.getString("dia_chi");
+                clientList.add(new Client(name1, phone, email, address));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return clientList;
+    }
+
+    @Override
+    public List<Client> arrangeByName(String arrange) {
+        List<Client> clientList = new ArrayList<>();
+        Connection connection;
+        PreparedStatement statement = null;
+        try {
+            if (arrange.equals("asc")){
+                ORDER_BY_NAME = "asc";
+            }else {
+                ORDER_BY_NAME = "desc";
+            }
+            connection = DBConnection.getConnection();
+            statement = connection.prepareStatement(ORDER_BY_NAME);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()){
+                String name = rs.getString("ten");
+                String phone = rs.getString("sdt");
+                String email = rs.getString("email");
+                String address = rs.getString("dia_chi");
+                clientList.add(new Client(name, phone, email, address));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }finally {
+            try {
+                statement.close();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return clientList;
     }
 }

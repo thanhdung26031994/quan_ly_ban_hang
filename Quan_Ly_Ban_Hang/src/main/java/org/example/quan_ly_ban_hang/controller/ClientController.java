@@ -33,10 +33,21 @@ public class ClientController extends HttpServlet {
             case "delete":
                 deleteClient(req,resp);
                 break;
+            case "arrange":
+                arrangeByName(req,resp);
+                break;
             default:
                 listClient(req,resp);
                 break;
         }
+    }
+
+    private void arrangeByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String arrange = req.getParameter("arrange");
+        List<Client> clientList = clientService.arrangeByName(arrange);
+        req.setAttribute("client", clientList);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("client/arrange.jsp");
+        dispatcher.forward(req,resp);
     }
 
     private void deleteClient(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -79,7 +90,18 @@ public class ClientController extends HttpServlet {
             case "edit":
                 editClient(req,resp);
                 break;
+            case "search":
+                searchByName(req,resp);
+                break;
         }
+    }
+
+    private void searchByName(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        List<Client> clients = clientService.searchByName(name);
+        req.setAttribute("client", clients);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("client/search.jsp");
+        dispatcher.forward(req,resp);
     }
 
     private void editClient(HttpServletRequest req, HttpServletResponse resp) throws IOException {

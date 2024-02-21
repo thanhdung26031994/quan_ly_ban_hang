@@ -14,4 +14,8 @@ public interface IClientService {
     Client findById(Integer id);
 
     void moveById(Integer id);
+
+    List<Client> searchByName(String name);
+
+    List<Client> arrangeByName(String arrange);
 }

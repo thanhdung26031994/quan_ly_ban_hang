@@ -23,7 +23,7 @@
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/client">Khách Hàng</a></li>
-                <li class="breadcrumb-item"><a href="#">Sản Phẩm</a></li>
+                <li class="breadcrumb-item"><a href="/product">Sản Phẩm</a></li>
                 <li class="breadcrumb-item"><a href="/invoice">Hoá Đơn</a></li>
                 <li class="breadcrumb-item"><a href="/detail">Chi Tiết HĐ</a></li>
             </ol>
@@ -34,13 +34,19 @@
 <div class="container">
     <h1 class="my-3">Quản Lý Khách Hàng</h1>
     <div class="row d-flex mx-3">
-        <div class="col-8">
+        <div class="col-3">
             <a class="btn btn-warning" role="button" href="/client?action=create">Thêm mới</a>
         </div>
-        <div class="col-4">
-            <form class="d-flex" role="search" action="#" method="post">
+        <div class="col-3">
+            <a class="btn btn-warning" role="button" href="/client?arrange=asc">Sắp xếp tăng dần</a>
+        </div>
+        <div class="col-3">
+            <a class="btn btn-warning" role="button" href="/client?arrange=desc">Sắp xếp giảm dần</a>
+        </div>
+        <div class="col-3">
+            <form class="d-flex" role="search" action="/client?action=search" method="post">
                 <input name="action" value="find" hidden="">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="country">
+                <input class="form-control me-2" type="search" placeholder="Tìm theo tên" aria-label="Search" name="name">
                 <button class="btn btn-outline-secondary" type="submit">Tìm</button>
             </form>
         </div>
