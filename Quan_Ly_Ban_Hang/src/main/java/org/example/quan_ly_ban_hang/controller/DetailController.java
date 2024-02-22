@@ -80,12 +80,10 @@ public class DetailController extends HttpServlet {
 
     private void createDetail(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         Integer idInvoice = Integer.valueOf(req.getParameter("idInvoice"));
-
         Integer idProduct = Integer.valueOf(req.getParameter("idProduct"));
         Integer quantity = Integer.valueOf(req.getParameter("quantity"));
         DetailCreate detailCreate = new DetailCreate(idInvoice, idProduct, quantity);
         detailService.addDetail(detailCreate);
-
         resp.sendRedirect("/detail");
     }
 }

@@ -31,8 +31,8 @@
             <div class="form-group">
                 <label for="idClient">Tên khách hàng</label>
                 <select id="idClient" class="form-control" name="idClient">
-                    <c:forEach items="${invoice}" var="i">
-                        <option value="${c.id}">${c.client}</option>
+                    <c:forEach items="${client}" var="c">
+                        <option value="${c.id}">${c.name}</option>
                     </c:forEach>
                 </select>
             </div>

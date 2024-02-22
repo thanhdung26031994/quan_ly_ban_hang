@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClientService implements IClientService{
-    private static String ORDER_BY_NAME = "select ten, sdt, email, dia_chi from khach_hang order by ten;";
+    private static String ORDER_BY_NAME_ASC = "select ten, sdt, email, dia_chi from khach_hang order by ten asc;";
+    private static String ORDER_BY_NAME_DESC = "select ten, sdt, email, dia_chi from khach_hang order by ten desc;";
     @Override
     public List<Client> getAllClient() {
         List<Client> clients = new ArrayList<>();
@@ -172,13 +173,14 @@ public class ClientService implements IClientService{
         Connection connection;
         PreparedStatement statement = null;
         try {
-            if (arrange.equals("asc")){
-                ORDER_BY_NAME = "asc";
-            }else {
-                ORDER_BY_NAME = "desc";
-            }
             connection = DBConnection.getConnection();
-            statement = connection.prepareStatement(ORDER_BY_NAME);
+            if (arrange.equals("asc")){
+                statement = connection.prepareStatement(ORDER_BY_NAME_ASC);
+            }else {
+              statement = connection.prepareStatement(ORDER_BY_NAME_DESC);
+            }
+
+
             ResultSet rs = statement.executeQuery();
             while (rs.next()){
                 String name = rs.getString("ten");

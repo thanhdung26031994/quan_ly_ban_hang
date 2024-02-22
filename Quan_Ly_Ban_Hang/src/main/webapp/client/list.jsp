@@ -38,10 +38,10 @@
             <a class="btn btn-warning" role="button" href="/client?action=create">Thêm mới</a>
         </div>
         <div class="col-3">
-            <a class="btn btn-warning" role="button" href="/client?arrange=asc">Sắp xếp tăng dần</a>
+            <a class="btn btn-warning" role="button" href="/client?action=arrange&arrange=asc">Sắp xếp tăng dần</a>
         </div>
         <div class="col-3">
-            <a class="btn btn-warning" role="button" href="/client?arrange=desc">Sắp xếp giảm dần</a>
+            <a class="btn btn-warning" role="button" href="/client?action=arrange&arrange=desc">Sắp xếp giảm dần</a>
         </div>
         <div class="col-3">
             <form class="d-flex" role="search" action="/client?action=search" method="post">

@@ -39,6 +39,7 @@ public class ClientController extends HttpServlet {
             default:
                 listClient(req,resp);
                 break;
+
         }
     }
 
@@ -46,7 +47,7 @@ public class ClientController extends HttpServlet {
         String arrange = req.getParameter("arrange");
         List<Client> clientList = clientService.arrangeByName(arrange);
         req.setAttribute("client", clientList);
-        RequestDispatcher dispatcher = req.getRequestDispatcher("client/arrange.jsp");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("client/list.jsp");
         dispatcher.forward(req,resp);
     }
 
